@@ -217,3 +217,59 @@ span {
   margin-left: 20px;
   font-size: 14px;
 }
+
+/* Special MODAL Styles */
+.hidden {
+  display: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.modal-background-visible {
+  display: inline;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  opacity: 0.4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.modal-box-visible {
+  display: inline;
+  height: 400px;
+  width: 600px;
+  background-color: #FFF;
+  border: 2px solid black;
+  border-radius: 25px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -300px;
+  margin-top: -200px;
+  z-index: 2;
+  text-align: center;
+  padding: 10px;
+  color: #747704;
+}
+
+.modal-pic {
+  max-width:500px;
+  max-height:320px;
+}
+
+.modal-a {
+  display: inline;
+  margin-top: 0;
+}
+
+.modal-close {
+  position: absolute;
+  left: 590px;
+  top: 10px;
+}
+/* End Special MODAL Styles */

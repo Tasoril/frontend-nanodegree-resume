@@ -1,3 +1,5 @@
+$('body').prepend("<div id=\"modal-box\" class=\"hidden\"></div><div id=\"modal-background\" class=\"hidden\" onclick=\"hideModal();\"></div>");
+
 bio = {
 	"name" : "Johnathon Stevens",
 	"role" : "Javascript Ninja",
@@ -21,8 +23,11 @@ bio.display = function() {
 	$("#topContacts").append(HTMLgithub.replace("%data%",bio.contacts.github));
 	$("#topContacts").append(HTMLcontactGeneric.replace("%data%",bio.contacts.linkedin).replace("%contact%","linkedin"));
 	$("#topContacts").append(HTMLlocation.replace("%data%",bio.contacts.location));
+	$("#modal-box").append("<img src="+bio.biopic+" alt=\"me\" class=\"modal-pic\"><br>"+bio.name+"<br>Email: <a class=\"modal-a\" href=\"mailto:"+bio.contacts.email+"\">"+bio.contacts.email+"</a><br>Phone: "+bio.contacts.mobile);
+	$("#modal-box").append("<div class=\"modal-close pointer\" onclick=\"hideModal();\">x</div>");
 	$("#header").append(HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage));
 	$("#header").append(HTMLbioPic.replace("%data%",bio.biopic));
+	$(".biopic").toggleClass("pointer");
 	if(bio.skills.length > 0) {
 		$("#header").append(HTMLskillsStart);
 		for(var skill = 0; skill < bio.skills.length; skill++) {
@@ -201,10 +206,20 @@ function drawMap() {
 }
 
 
-
 // Call all of our encapsulated functions (in any order) to render the resume.
 bio.display();
 work.display();
 projects.display();
 education.display();
 drawMap();
+
+// Additional interactivity
+function hideModal() {
+	document.getElementById("modal-background").className = "hidden";
+	document.getElementById("modal-box").className = "hidden";
+}
+
+$(".biopic").click(function() {
+	$("#modal-background").toggleClass("modal-background-visible");
+	$("#modal-box").toggleClass("modal-box-visible");
+});
