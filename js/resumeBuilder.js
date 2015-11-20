@@ -16,6 +16,8 @@ bio = {
 };
 // Write Header Information
 bio.display = function() {
+	$("#header").prepend(HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage));
+	$("#header").prepend(HTMLbioPic.replace("%data%",bio.biopic));
 	$("#header").prepend(HTMLheaderRole.replace("%data%",bio.role));
 	$("#header").prepend(HTMLheaderName.replace("%data%",bio.name));
 	$("#topContacts").append(HTMLmobile.replace("%data%",bio.contacts.mobile));
@@ -25,8 +27,6 @@ bio.display = function() {
 	$("#topContacts").append(HTMLlocation.replace("%data%",bio.contacts.location));
 	$("#modal-box").append("<img src="+bio.biopic+" alt=\"me\" class=\"modal-pic\"><br>"+bio.name+"<br>Email: <a class=\"modal-a\" href=\"mailto:"+bio.contacts.email+"\">"+bio.contacts.email+"</a><br>Phone: "+bio.contacts.mobile);
 	$("#modal-box").append("<div class=\"modal-close pointer\" onclick=\"hideModal();\">x</div>");
-	$("#header").append(HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage));
-	$("#header").append(HTMLbioPic.replace("%data%",bio.biopic));
 	$(".biopic").toggleClass("pointer");
 	if(bio.skills.length > 0) {
 		$("#header").append(HTMLskillsStart);
@@ -36,7 +36,7 @@ bio.display = function() {
 		}
 	}
 	// End Write Header Information
-	//$("#footerContacts").append($("#topContacts"));
+	$("#topContacts").clone().appendTo("#footerContacts");
 }
 
 
